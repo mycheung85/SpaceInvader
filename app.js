@@ -9,8 +9,7 @@ function drawShip(){
     ctx.fillStyle="#FF0000";
     ctx.fillRect(x-25+deltaX,450,50,30);
     drawAlien();
-    
-
+    drawBullet();
 }
 
 
@@ -28,6 +27,13 @@ function drawAlien(){
         ctx.fillRect(50+(i*50), 200, 30, 20); 
     }
 }
+
+function drawBullet() {
+    ctx.fillStyle = "black";
+    ctx.arc(350, 460, 5, 0, 2 * Math.PI, true)
+    ctx.stroke();
+}
+
 
 
 document.onkeydown = function(e){
