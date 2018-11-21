@@ -2,16 +2,45 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 let x=canvas.width/2
 let deltaX=0;
+let start = document.getElementById("start")
+let stop = document.getElementById("stop")
+let intervalID="";
+let status = document.getElementById("gameStatus")
+let shipImage= new Image()
+shipImage.src="./img/ship.svg"
+
+let shipImage= new Image()
+shipImage.src="./img/ship.svg"
+    // ctx.drawImage(shipImage,0,0)
 
 
+
+
+function main(){
+    deltaX=0;
+    status.innerHTML= " Score: ???? " 
+ intervalID = setInterval( drawShip, 100) }
+
+
+ function stopGame(){
+    status.innerHTML= " GAME OVER!" 
+    clearInterval(intervalID) 
+    deltaX=0;
+}
+   
 function drawShip(){
     ctx.clearRect(0, 0, 700, 500)
     ctx.fillStyle="#FF0000";
-    ctx.fillRect(x-25+deltaX,450,50,30);
+     ctx.drawImage(shipImage,x-25+deltaX,450,50,30)
+    
+    // ctx.fillRect();
+
     drawAlien();
+    console.log("it is running ")
     
 
 }
+
 
 
 function drawAlien(){
@@ -34,21 +63,18 @@ document.onkeydown = function(e){
     if (e.keyCode === 37){
         deltaX-=5;
         console.log(deltaX)
-    
-        drawShip()
-
     }
     else if (e.keyCode === 39){
         deltaX+=5;
         console.log(deltaX)
-            drawShip()
-        
     }}
 
 
-    let intervalID = setInterval(drawAlien(), 1000)
+   
 
 
-    drawShip();
+    start.addEventListener("click", main)
+    stop.addEventListener("click", stopGame) 
+   
 
 
