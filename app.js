@@ -1,6 +1,7 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 let x=canvas.width/2
+let y= canvas.height/2
 let deltaX=0;
 
 
@@ -15,11 +16,13 @@ function drawShip(){
 
 function drawAlien(){
 
-    for(let i = 0; i < 10; i++) {
+    for(let i = 0; i < 12 ; i++) {
         ctx.fillStyle="green";
         ctx.fillRect(50+(i*50), 50, 30, 20); 
+        
         ctx.fillStyle="lime";
         ctx.fillRect(50+(i*50), 100, 30, 20);
+        
         ctx.fillStyle="yellow";
         ctx.fillRect(50+(i*50), 150, 30, 20);
 
@@ -29,9 +32,13 @@ function drawAlien(){
 }
 
 function drawBullet() {
-    ctx.fillStyle = "black";
-    ctx.arc(350, 460, 5, 0, 2 * Math.PI, true)
-    ctx.stroke();
+    for( let i = 0; i < 15; i++) {
+        ctx.beginPath()
+        ctx.fillStyle = "black";
+        ctx.arc(350, 460 - (i * 40), 5, 0, 2 * Math.PI, true)
+        ctx.stroke();
+        ctx.fill();
+    }
 }
 
 
@@ -47,9 +54,12 @@ document.onkeydown = function(e){
     else if (e.keyCode === 39){
         deltaX+=5;
         console.log(deltaX)
-            drawShip()
-        
-    }}
+            drawShip() 
+    }
+    else if(e.keyCode === 32) {
+        drawBullet()
+    }
+}
 
 
     let intervalID = setInterval(drawAlien(), 1000)
