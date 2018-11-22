@@ -10,8 +10,8 @@ let status = document.getElementById("gameStatus")
 let shipImage= new Image()
 shipImage.src="./img/ship.svg"
 
-let shipImage= new Image()
-shipImage.src="./img/ship.svg"
+// let shipImage= new Image()
+// shipImage.src="./img/ship.svg"
     // ctx.drawImage(shipImage,0,0)
 
 
@@ -65,7 +65,7 @@ function drawAlien(){
 }
 
 function drawBullet() {
-    for( let i = 0; i < 15; i++) {
+    for( let i = 0; i < 1; i++) {
         ctx.beginPath()
         ctx.fillStyle = "black";
         ctx.arc(350, 460 - (i * 40), 5, 0, 2 * Math.PI, true)
